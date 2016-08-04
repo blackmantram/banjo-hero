@@ -1,0 +1,15 @@
+{
+  "name": "banjo-hero",
+  "version": "0.1.0",
+  "description": "a guitar-hero styled rhyhm game for testing purposes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "blackmantram",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1"
+  }
+}
