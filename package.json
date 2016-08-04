@@ -1,7 +1,7 @@
 {
   "name": "banjo-hero",
   "version": "0.1.0",
-  "description": "a guitar-hero styled rhyhm game for testing purposes",
+  "description": "A guitar-hero styled rhytm game built using Phaser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
