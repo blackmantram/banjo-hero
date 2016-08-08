@@ -12,7 +12,7 @@ NotesHandler.prototype = {
 			this.notes[i].move();
 		}
 		if (this.notes.length > 0)	{
-			if (this.notes[0].sprite.x < 0) {
+			if (this.notes[0].sprite.x < this.notes[0].sprite.width*-1) {
 				this.removeNote();
 			}
 		}
@@ -20,9 +20,10 @@ NotesHandler.prototype = {
 	checkCollission:function(collisionArea){
 		var first = this.notes[0];
 		if (first !== undefined){
-			var lowLimit = collisionArea.x;
-			var upLimit =  collisionArea.x+collisionArea.width;
-			if (first.sprite.x >= lowLimit && first.sprite.x < upLimit){
+			var firstEndDiff = collisionArea.x - first.sprite.x;
+			var secondEndDiff = (collisionArea.x+collisionArea.width) - (first.sprite.x+first.sprite.width);
+			var match = (Math.abs(firstEndDiff)+Math.abs(secondEndDiff))/2; 
+			if (match <= first.sprite.width) {
 				this.removeNote();
 				return true;	
 			}

@@ -2,7 +2,7 @@ var Hud = function Hud() {
 	this.missCount = 0;
 	this.currentScore = 0;
 	this.scoreText = game.add.text(10, 10, "score: "+this.currentScore, { font: '12px Arial', fill: '#fff' });
-	this.scoreText = game.add.text(10, 24, "miss: "+this.missCount, { font: '12px Arial', fill: '#f00' });
+	this.missText = game.add.text(10, 24, "miss: "+this.missCount, { font: '12px Arial', fill: '#f00' });
 }
 
 Hud.prototype = {
@@ -12,6 +12,6 @@ Hud.prototype = {
 	},
 	miss:function(){
 		this.missCount++;
-		this.scoreText.text = "miss: "+this.missCount;
+		this.missText.text = "miss: "+this.missCount;
 	}
 }
