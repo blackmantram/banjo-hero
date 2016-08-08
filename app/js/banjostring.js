@@ -22,33 +22,44 @@ BanjoString.prototype = {
 	},
 	pulse: function() {
 		this.button.push();
+		if (this.notes.checkCollission(this.button.getCollisionArea()))
+		{
+			console.log("great!!");
+		}
 	}
 };
 
 var Button = function Button(string) {
 	this.sprite = game.add.sprite(20, string.sprite.y-4, 'button');
 	this.push = function(){
-		name = this.name;
 		sprite = this.sprite;
 		startInterval();
 	}
 	
 	var timer;
 	var sprite;
-	var name;
-	var privatevar;
 
 	function startInterval() {
-		if (timer !== undefined)
-		{
-			clearInterval(timer);
-		}
+		resetInterval();
 		timer = setInterval(tick, 200);
 		sprite.frame = 1;
 	}
 	function tick() {
+		resetInterval();
+		sprite.frame = 0;
+	}
+	function resetInterval() {
 		clearInterval(timer);
 		timer = undefined;
-		sprite.frame = 0;
+	}
+}
+
+Button.prototype = {
+	getCollisionArea:function()
+	{
+		return {
+			x:this.sprite.x,
+			width:this.sprite.width
+		};
 	}
 }
