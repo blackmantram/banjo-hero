@@ -19,6 +19,9 @@ window.onload = function(){
 				billboard.show();
 				hud.score();
 			};
+			string.onMiss = function(){
+				hud.miss();
+			};
 			strings.push(string);
 		}
 		game.time.events.loop(Phaser.Timer.SECOND, setRandomNote, this);

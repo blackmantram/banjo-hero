@@ -28,6 +28,11 @@ BanjoString.prototype = {
 				this.onHit();
 			}
 		}
+		else{
+			if (this.onMiss !== undefined){
+				this.onMiss();
+			}	
+		}
 	}
 }
 
