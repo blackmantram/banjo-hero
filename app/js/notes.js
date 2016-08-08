@@ -1,6 +1,7 @@
 var NotesHandler = function Note(string) {
 	this.string = string;
 	this.notes = [];
+	this.onHit = function(){};
 }
 
 NotesHandler.prototype = {
@@ -13,6 +14,7 @@ NotesHandler.prototype = {
 		}
 		if (this.notes.length > 0)	{
 			if (this.notes[0].sprite.x < this.notes[0].sprite.width*-1) {
+				this.onHit("MISS");
 				this.removeNote();
 			}
 		}
@@ -25,10 +27,12 @@ NotesHandler.prototype = {
 			var match = (Math.abs(firstEndDiff)+Math.abs(secondEndDiff))/2; 
 			if (match <= first.sprite.width) {
 				this.removeNote();
-				return true;	
+				if (match <= 5)
+					this.onHit("GREAT");
+				else
+					this.onHit("GOOD");
 			}
 		}
-		return false;
 	},
 	removeNote:function(){
 		note = this.notes.shift();

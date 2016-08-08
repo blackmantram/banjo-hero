@@ -15,14 +15,23 @@ window.onload = function(){
 		billboard = new Billboard();
 		for(var index=0; index<STRING_KEYS.length; index++) {
 			var string = new BanjoString(index, STRING_KEYS[index]);
-			string.onHit = function(){
-				billboard.showGreat();
-				hud.score();
-			};
-			string.onMiss = function(){
-				billboard.showMiss();
-				hud.miss();
-			};
+			string.onHit(function(type){
+				//TODO: Implement strategy pattern here!
+				switch(type) {
+					case "GREAT":
+						billboard.showGreat();
+						hud.score();
+						break;
+					case "GOOD":
+						billboard.showGood();
+						hud.score();
+						break;
+					case "MISS":
+						billboard.showMiss();
+						hud.miss();
+						break;
+				}
+			});
 			strings.push(string);
 		}
 		game.time.events.loop(Phaser.Timer.SECOND, setRandomNote, this);

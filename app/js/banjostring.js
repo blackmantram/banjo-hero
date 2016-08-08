@@ -22,17 +22,10 @@ BanjoString.prototype = {
 	},
 	pulse: function() {
 		this.button.push();
-		if (this.notes.checkCollission(this.button.getCollisionArea()))
-		{
-			if (this.onHit !== undefined){
-				this.onHit();
-			}
-		}
-		else{
-			if (this.onMiss !== undefined){
-				this.onMiss();
-			}	
-		}
+		var collisionType = this.notes.checkCollission(this.button.getCollisionArea());
+	},
+	onHit:function(callback) {
+		this.notes.onHit = callback;
 	}
 }
 
