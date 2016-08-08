@@ -4,19 +4,21 @@ window.onload = function(){
 	var strings = []; 
 	function preload() {
 		game.load.image('common_string', 'assets/string.png');
-		game.load.image('button', 'assets/button.png');
+		game.load.spritesheet('button', 'assets/button.png', 16, 16, 2);
 	}
 
 	function create() {
-		for(var index=0; index<NUM_STRINGS; index++) {
-			strings.push(new BanjoString(index));
+		for(var index=0; index<STRING_KEYS.length; index++) {
+			strings.push(new BanjoString(index, STRING_KEYS[index]));
 		}
 		game.time.events.loop(Phaser.Timer.SECOND, setRandomNote, this);
 	}
 
 	function update() {
 		for(var i in strings)
+		{
 			strings[i].update();
+		}
 	}
 
 	function setRandomNote() {
