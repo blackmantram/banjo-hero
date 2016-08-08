@@ -16,10 +16,11 @@ window.onload = function(){
 		for(var index=0; index<STRING_KEYS.length; index++) {
 			var string = new BanjoString(index, STRING_KEYS[index]);
 			string.onHit = function(){
-				billboard.show();
+				billboard.showGreat();
 				hud.score();
 			};
 			string.onMiss = function(){
+				billboard.showMiss();
 				hud.miss();
 			};
 			strings.push(string);
