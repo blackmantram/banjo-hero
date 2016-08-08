@@ -24,10 +24,12 @@ BanjoString.prototype = {
 		this.button.push();
 		if (this.notes.checkCollission(this.button.getCollisionArea()))
 		{
-			console.log("great!!");
+			if (this.onHit !== undefined){
+				this.onHit();
+			}
 		}
 	}
-};
+}
 
 var Button = function Button(string) {
 	this.sprite = game.add.sprite(20, string.sprite.y-4, 'button');

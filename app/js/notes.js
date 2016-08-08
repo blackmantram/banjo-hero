@@ -18,11 +18,11 @@ NotesHandler.prototype = {
 		}
 	},
 	checkCollission:function(collisionArea){
-		var first = this.notes[0].sprite;
+		var first = this.notes[0];
 		if (first !== undefined){
 			var lowLimit = collisionArea.x;
 			var upLimit =  collisionArea.x+collisionArea.width;
-			if (first.x >= lowLimit && first.x < upLimit){
+			if (first.sprite.x >= lowLimit && first.sprite.x < upLimit){
 				this.removeNote();
 				return true;	
 			}
